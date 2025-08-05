@@ -1,0 +1,18 @@
+proxy_location: EveryNode
+
+http_options:
+  host: 0.0.0.0
+  port: 8080
+
+logging_config:
+  encoding: TEXT
+  log_level: INFO
+  logs_dir: null
+  enable_access_log: true
+
+applications:
+- name: App
+  import_path: main:app
+  runtime_env: {}
+  deployments:
+  - name: Main
