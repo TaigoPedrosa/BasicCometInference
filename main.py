@@ -49,7 +49,7 @@ class Main:
         logging.warning(f"MODEL[Loaded][{MODEL}]")
             
     async def process(self, items:list[dict[str,str]]) -> dict[str,str]:
-        return self.model.predict(items, gpus=1, num_workers=NUM_CPUS)
+        return self.model.predict(items, gpus=1, num_workers=NUM_CPUS, progress_bar=False)
 
     @fastapi_app.post("/batch")
     async def batch(self, request: Request) -> JSONResponse:

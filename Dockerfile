@@ -1,8 +1,11 @@
 FROM pytorch/pytorch:2.6.0-cuda12.6-cudnn9-runtime
 
-COPY ./requirements.txt ./requirements.txt
+RUN apt-get update && apt-get install -y --no-install-recommends nvtop
 
-RUN pip install -r requirements.txt
+COPY ./requirements.txt ./requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY ./config.yaml ./config.yaml
 
 COPY . .
 
